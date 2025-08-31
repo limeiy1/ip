@@ -12,6 +12,8 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
         String line;
+        String[] list = new String[100];
+        int count = 0;
         do {
             line = in.nextLine();
             if (line.equalsIgnoreCase("bye")) {
@@ -20,9 +22,23 @@ public class Duke {
                 System.out.println(LINE);
                 return;
             }
-            System.out.println(LINE);
-            System.out.println(line);
-            System.out.println(LINE);
+            if (line.equalsIgnoreCase("list")) {
+                System.out.println(LINE);
+                if (count == 0) {
+                    System.out.println("List is empty!");
+                } else {
+                    for (int i = 0; i < count; i++) {
+                        System.out.println( (i+1) + ". " + list[i]);
+                    }
+                }
+                System.out.println(LINE);
+            } else {
+                System.out.println(LINE);
+                System.out.println("added: " + line);
+                System.out.println(LINE);
+                list[count] = line;
+                count++;
+            }
         } while (in.hasNextLine());
     }
 }
