@@ -17,27 +17,31 @@ public class Duke {
         String inputLine;
         do {
             inputLine = in.nextLine();
-            if (inputLine.equalsIgnoreCase("bye")) {
+            try {
+                if (inputLine.equalsIgnoreCase("bye")) {
+                    System.out.println(LINE);
+                    System.out.println("Bye. Hope to see you again soon!");
+                    System.out.println(LINE);
+                    return;
+                }
+                if (inputLine.equalsIgnoreCase("list")) { // show list
+                    printList();
+                } else if (inputLine.startsWith("mark")) { // mark as done
+                    markTaskAsDone(inputLine);
+                } else if (inputLine.startsWith("unmark")) { // unmark as done
+                    unmarkTaskAsDone(inputLine);
+                } else if (inputLine.startsWith("todo")) { // add new todo task
+                    addTodo(inputLine);
+                } else if (inputLine.startsWith("deadline")) { // add new deadline task
+                    addDeadline(inputLine);
+                } else if (inputLine.startsWith("event")) { // add new event task
+                    addEvent(inputLine);
+                } else { // print a statement when an invalid command is received
+                    throw new DukeException("Please enter a valid command :(");
+                }
+            } catch (DukeException e) {
                 System.out.println(LINE);
-                System.out.println("Bye. Hope to see you again soon!");
-                System.out.println(LINE);
-                return;
-            }
-            if (inputLine.equalsIgnoreCase("list")) { // show list
-                printList();
-            } else if (inputLine.startsWith("mark")) { // mark as done
-                markTaskAsDone(inputLine);
-            } else if (inputLine.startsWith("unmark")) { // unmark as done
-                unmarkTaskAsDone(inputLine);
-            } else if (inputLine.startsWith("todo")) { // add new todo task
-                addTodo(inputLine);
-            } else if (inputLine.startsWith("deadline")){ // add new deadline task
-                addDeadline(inputLine);
-            } else if (inputLine.startsWith("event")) { // add new event task
-                addEvent(inputLine);
-            } else { // print a statement when an invalid command is received
-                System.out.println(LINE);
-                System.out.println("Please enter a valid command :(");
+                System.out.println(e.getMessage());
                 System.out.println(LINE);
             }
         } while (in.hasNextLine());
@@ -76,7 +80,10 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addTodo(String line) {
+    private static void addTodo(String line) throws DukeException {
+        if ((line.length() <= 5) || (line.substring(5).trim()).isEmpty()) {
+            throw new DukeException("The todo description cannot be empty!");
+        }
         String taskName = line.substring(5);
         taskList[taskCount] = new Todo(taskName);
 
@@ -84,18 +91,36 @@ public class Duke {
         taskCount++;
     }
 
-    private static void addDeadline(String line) {
+    private static void addDeadline(String line) throws DukeException {
+        if ((line.length() <= 9) || (line.substring(9).trim()).isEmpty()) {
+            throw new DukeException("The deadline description cannot be empty!");
+        }
         String deadlineSubstring = line.substring(9);
         String[] deadlineDetails = deadlineSubstring.split(" /by ");
+
+        if (deadlineDetails.length != 2) {
+            throw new DukeException("The deadline format is incorrect!");
+        }
         String taskName = deadlineDetails[0];
         String deadlineDate = deadlineDetails[1];
+
+        if (taskName.trim().isEmpty()) {
+            throw new DukeException("The deadline task cannot be empty!");
+        }
+        if (deadlineDate.trim().isEmpty()) {
+            throw new DukeException("The deadline date cannot be empty!");
+        }
+
         taskList[taskCount] = new Deadline(taskName, deadlineDate);
 
         printAddedTask();
         taskCount++;
     }
 
-    private static void addEvent(String line) {
+    private static void addEvent(String line) throws DukeException {
+        if ((line.length() <= 6) || (line.substring(6).trim()).isEmpty()) {
+            throw new DukeException("The event description cannot be empty!");
+        }
         String eventSubstring = line.substring(6);
         String[] eventDetails = eventSubstring.split(" /from ");
         String taskName = eventDetails[0];
