@@ -2,3 +2,6 @@ todo borrow book
 list
 deadline return book /by Sunday
 event project meeting /from Mon 2pm /to 4pm
+bleh
+event party /from 3 jan /to
+todo
