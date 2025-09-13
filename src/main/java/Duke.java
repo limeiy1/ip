@@ -97,13 +97,12 @@ public class Duke {
         }
         String deadlineSubstring = line.substring(9);
         String[] deadlineDetails = deadlineSubstring.split(" /by ");
-
         if (deadlineDetails.length != 2) {
             throw new DukeException("The deadline format is incorrect!");
         }
+
         String taskName = deadlineDetails[0];
         String deadlineDate = deadlineDetails[1];
-
         if (taskName.trim().isEmpty()) {
             throw new DukeException("The deadline task cannot be empty!");
         }
@@ -123,11 +122,27 @@ public class Duke {
         }
         String eventSubstring = line.substring(6);
         String[] eventDetails = eventSubstring.split(" /from ");
-        String taskName = eventDetails[0];
+        if (eventDetails.length != 2) {
+            throw new DukeException("The event format is incorrect!");
+        }
+
+        String eventName = eventDetails[0];
+        if (eventName.trim().isEmpty()) {
+            throw new DukeException("The event name cannot be empty!");
+        }
+
         String[] eventDates = eventDetails[1].split(" /to ");
+        if (eventDates.length != 2) {
+            throw new DukeException("The event format is incorrect!");
+        }
+
         String fromDate = eventDates[0];
         String toDate = eventDates[1];
-        taskList[taskCount] = new Event(taskName, fromDate, toDate);
+        if (fromDate.trim().isEmpty() || toDate.trim().isEmpty()) {
+            throw new DukeException("The event date cannot be empty!");
+        }
+
+        taskList[taskCount] = new Event(eventName, fromDate, toDate);
 
         printAddedTask();
         taskCount++;
