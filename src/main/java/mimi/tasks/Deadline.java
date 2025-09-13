@@ -1,3 +1,8 @@
+package mimi.tasks;
+
+import mimi.exception.MimiException;
+
+
 public class Deadline extends Task {
 
     private String by;

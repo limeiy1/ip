@@ -1,3 +1,9 @@
+package mimi.tasks;
+
+import mimi.exception.MimiException;
+
+
+
 public class Event extends Task {
 
     private String from;
