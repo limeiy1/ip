@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Duke {
+public class Mimi {
     private static final String LINE =
             "____________________________________________________________";
     private static final int MAX_TASKS = 100;
@@ -37,9 +37,9 @@ public class Duke {
                 } else if (inputLine.startsWith("event")) { // add new event task
                     addEvent(inputLine);
                 } else { // print a statement when an invalid command is received
-                    throw new DukeException("Please enter a valid command :(");
+                    throw new MimiException("Please enter a valid command :(");
                 }
-            } catch (DukeException e) {
+            } catch (MimiException e) {
                 System.out.println(LINE);
                 System.out.println(e.getMessage());
                 System.out.println(LINE);
@@ -80,9 +80,9 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addTodo(String line) throws DukeException {
+    private static void addTodo(String line) throws MimiException {
         if ((line.length() <= 5) || (line.substring(5).trim()).isEmpty()) {
-            throw new DukeException("The todo description cannot be empty!");
+            throw new MimiException("The todo description cannot be empty!");
         }
         String taskName = line.substring(5);
         taskList[taskCount] = new Todo(taskName);
@@ -91,23 +91,23 @@ public class Duke {
         taskCount++;
     }
 
-    private static void addDeadline(String line) throws DukeException {
+    private static void addDeadline(String line) throws MimiException {
         if ((line.length() <= 9) || (line.substring(9).trim()).isEmpty()) {
-            throw new DukeException("The deadline description cannot be empty!");
+            throw new MimiException("The deadline description cannot be empty!");
         }
         String deadlineSubstring = line.substring(9);
         String[] deadlineDetails = deadlineSubstring.split(" /by ");
         if (deadlineDetails.length != 2) {
-            throw new DukeException("The deadline format is incorrect!");
+            throw new MimiException("The deadline format is incorrect!");
         }
 
         String taskName = deadlineDetails[0];
         String deadlineDate = deadlineDetails[1];
         if (taskName.trim().isEmpty()) {
-            throw new DukeException("The deadline task cannot be empty!");
+            throw new MimiException("The deadline task cannot be empty!");
         }
         if (deadlineDate.trim().isEmpty()) {
-            throw new DukeException("The deadline date cannot be empty!");
+            throw new MimiException("The deadline date cannot be empty!");
         }
 
         taskList[taskCount] = new Deadline(taskName, deadlineDate);
@@ -116,30 +116,30 @@ public class Duke {
         taskCount++;
     }
 
-    private static void addEvent(String line) throws DukeException {
+    private static void addEvent(String line) throws MimiException {
         if ((line.length() <= 6) || (line.substring(6).trim()).isEmpty()) {
-            throw new DukeException("The event description cannot be empty!");
+            throw new MimiException("The event description cannot be empty!");
         }
         String eventSubstring = line.substring(6);
         String[] eventDetails = eventSubstring.split(" /from ");
         if (eventDetails.length != 2) {
-            throw new DukeException("The event format is incorrect!");
+            throw new MimiException("The event format is incorrect!");
         }
 
         String eventName = eventDetails[0];
         if (eventName.trim().isEmpty()) {
-            throw new DukeException("The event name cannot be empty!");
+            throw new MimiException("The event name cannot be empty!");
         }
 
         String[] eventDates = eventDetails[1].split(" /to ");
         if (eventDates.length != 2) {
-            throw new DukeException("The event format is incorrect!");
+            throw new MimiException("The event format is incorrect!");
         }
 
         String fromDate = eventDates[0];
         String toDate = eventDates[1];
         if (fromDate.trim().isEmpty() || toDate.trim().isEmpty()) {
-            throw new DukeException("The event date cannot be empty!");
+            throw new MimiException("The event date cannot be empty!");
         }
 
         taskList[taskCount] = new Event(eventName, fromDate, toDate);
