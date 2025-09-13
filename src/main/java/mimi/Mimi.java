@@ -1,3 +1,13 @@
+package mimi;
+
+import mimi.tasks.Task;
+import mimi.tasks.Todo;
+import mimi.tasks.Deadline;
+import mimi.tasks.Event;
+
+
+import mimi.exception.MimiException;
+
 import java.util.Scanner;
 
 public class Mimi {
