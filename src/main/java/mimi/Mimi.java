@@ -44,6 +44,8 @@ public class Mimi {
                     addDeadline(inputLine);
                 } else if (inputLine.startsWith("event")) { // add new event task
                     addEvent(inputLine);
+                } else if (inputLine.startsWith("delete")) {
+                    handleDelete(inputLine);
                 } else { // print a statement when an invalid command is received
                     throw new MimiException("Please enter a valid command :(");
                 }
@@ -150,6 +152,19 @@ public class Mimi {
         taskList.add(new Event(eventName, fromDate, toDate));
 
         printAddedTask();
+    }
+
+    private static void handleDelete(String line) throws MimiException {
+        int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
+
+        System.out.println(LINE);
+        System.out.println("I've removed this task:");
+        System.out.println(taskList.get(taskIndex).toString());
+
+        taskList.remove(taskIndex);
+
+        System.out.println("Now you have " + taskList.size() + " tasks in your list.");
+        System.out.println(LINE);
     }
 
     private static void printAddedTask() {
