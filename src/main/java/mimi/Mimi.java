@@ -8,14 +8,95 @@ import mimi.tasks.Event;
 import mimi.exception.MimiException;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Mimi {
+    private static final String FILE_PATH = "./data/mimi.txt";
+
     private static final String LINE =
             "____________________________________________________________";
     static ArrayList<Task> taskList = new ArrayList<>();
 
+    public static ArrayList<Task> load() throws IOException {
+        ArrayList<Task> tasks = new ArrayList<>();
+        File file = new File(FILE_PATH);
+
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+                try {
+                    tasks.add(parseData(line));
+                } catch (MimiException e) {
+                    System.out.println("Skipping invalid line: " + line);
+                }
+            }
+        }
+        return tasks;
+    }
+
+    private static Task parseData(String line) throws MimiException {
+        String[] word = line.split("\\|");
+        if (word.length < 3) {
+            throw new MimiException("Line is corrupted.");
+        }
+
+        String taskType = word[0].trim();
+        String doneFlag = word[1].trim();
+
+        switch (taskType) {
+        case "T": {
+            Task todo = new Todo(word[2].trim());
+            if (doneFlag.equals("1")) {
+                todo.markAsDone();
+            }
+            return todo;
+        }
+        case "D": {
+            if (word.length != 4) {
+                throw new MimiException("Invalid deadline line: " + line);
+            }
+            Task deadline = new Deadline(word[2].trim(), word[3].trim());
+            if (doneFlag.equals("1")) {
+                deadline.markAsDone();
+            }
+            return deadline;
+        }
+        case "E": {
+            if (word.length != 5) {
+                throw new MimiException("Invalid event line: " + line);
+            }
+            Task event = new Event(word[2].trim(), word[3].trim(), word[4].trim());
+            if (doneFlag.equals("1")) {
+                event.markAsDone();
+            }
+            return event;
+        }
+        default:
+            throw new MimiException("Invalid task type: " + taskType);
+        }
+    }
+
+    public static void save(ArrayList<Task> taskList) {
+        try (FileWriter fw = new FileWriter(FILE_PATH)) {
+            for (Task task : taskList) {
+                fw.write(task.toSaveFormat() + System.lineSeparator());
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving tasks: " + e.getMessage());
+        }
+    }
+
+
     public static void main(String[] args) {
+        try {
+            taskList = load();
+        } catch (IOException e) {
+            System.out.println("Error loading tasks: " + e.getMessage());
+        }
+
         System.out.println(LINE);
         System.out.println("Hello I'm mimi!");
         System.out.println("What can I do for you?");
@@ -77,6 +158,8 @@ public class Mimi {
         System.out.println("Nice! I've marked this task as done:");
         System.out.println(taskList.get(taskIndex).toString());
         System.out.println(LINE);
+
+        save(taskList);
     }
 
     private static void unmarkTaskAsDone(String line) {
@@ -87,6 +170,8 @@ public class Mimi {
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println(taskList.get(taskIndex).toString());
         System.out.println(LINE);
+
+        save(taskList);
     }
 
     private static void addTodo(String line) throws MimiException {
@@ -97,6 +182,8 @@ public class Mimi {
         taskList.add(new Todo(taskName));
 
         printAddedTask();
+
+        save(taskList);
     }
 
     private static void addDeadline(String line) throws MimiException {
@@ -121,6 +208,8 @@ public class Mimi {
         taskList.add(new Deadline(taskName, deadlineDate));
 
         printAddedTask();
+
+        save(taskList);
     }
 
     private static void addEvent(String line) throws MimiException {
@@ -152,6 +241,8 @@ public class Mimi {
         taskList.add(new Event(eventName, fromDate, toDate));
 
         printAddedTask();
+
+        save(taskList);
     }
 
     private static void handleDelete(String line) throws MimiException {
@@ -165,6 +256,8 @@ public class Mimi {
 
         System.out.println("Now you have " + taskList.size() + " tasks in your list.");
         System.out.println(LINE);
+
+        save(taskList);
     }
 
     private static void printAddedTask() {
@@ -178,4 +271,5 @@ public class Mimi {
         }
         System.out.println(LINE);
     }
+
 }

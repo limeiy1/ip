@@ -1,0 +1,4 @@
+T | 1 | work
+T | 0 | practice
+D | 1 | assignment | 7 jan
+D | 0 | hw | 10 feb
