@@ -1,0 +1,4 @@
+T | 0 | win
+T | 1 | work
+T | 0 | practice
+D | 1 | assignment | 7 jan
