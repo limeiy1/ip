@@ -5,17 +5,15 @@ import mimi.tasks.Todo;
 import mimi.tasks.Deadline;
 import mimi.tasks.Event;
 
-
 import mimi.exception.MimiException;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Mimi {
     private static final String LINE =
             "____________________________________________________________";
-    private static final int MAX_TASKS = 100;
-    private static int taskCount = 0;
-    static Task[] taskList = new Task[MAX_TASKS];
+    static ArrayList<Task> taskList = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println(LINE);
@@ -46,6 +44,8 @@ public class Mimi {
                     addDeadline(inputLine);
                 } else if (inputLine.startsWith("event")) { // add new event task
                     addEvent(inputLine);
+                } else if (inputLine.startsWith("delete")) {
+                    handleDelete(inputLine);
                 } else { // print a statement when an invalid command is received
                     throw new MimiException("Please enter a valid command :(");
                 }
@@ -59,12 +59,11 @@ public class Mimi {
 
     private static void printList() {
         System.out.println(LINE);
-        if (taskCount == 0) {
+        if (taskList.isEmpty()) {
             System.out.println("List is empty!");
         } else {
-            System.out.println("Here are the tasks in your list:");
-            for (int i = 0; i < taskCount; i++) {
-                System.out.println((i + 1) + ". " + taskList[i].toString());
+            for (Task task : taskList) {
+                System.out.println((taskList.indexOf(task)+1) + ". " + task.toString());
             }
         }
         System.out.println(LINE);
@@ -72,21 +71,21 @@ public class Mimi {
 
     private static void markTaskAsDone(String line) {
         int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
-        taskList[taskIndex].markAsDone();
+        taskList.get(taskIndex).markAsDone();
 
         System.out.println(LINE);
         System.out.println("Nice! I've marked this task as done:");
-        System.out.println(taskList[taskIndex].toString());
+        System.out.println(taskList.get(taskIndex).toString());
         System.out.println(LINE);
     }
 
     private static void unmarkTaskAsDone(String line) {
         int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
-        taskList[taskIndex].unmarkAsDone();
+        taskList.get(taskIndex).unmarkAsDone();
 
         System.out.println(LINE);
         System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(taskList[taskIndex].toString());
+        System.out.println(taskList.get(taskIndex).toString());
         System.out.println(LINE);
     }
 
@@ -95,10 +94,9 @@ public class Mimi {
             throw new MimiException("The todo description cannot be empty!");
         }
         String taskName = line.substring(5);
-        taskList[taskCount] = new Todo(taskName);
+        taskList.add(new Todo(taskName));
 
         printAddedTask();
-        taskCount++;
     }
 
     private static void addDeadline(String line) throws MimiException {
@@ -120,10 +118,9 @@ public class Mimi {
             throw new MimiException("The deadline date cannot be empty!");
         }
 
-        taskList[taskCount] = new Deadline(taskName, deadlineDate);
+        taskList.add(new Deadline(taskName, deadlineDate));
 
         printAddedTask();
-        taskCount++;
     }
 
     private static void addEvent(String line) throws MimiException {
@@ -152,20 +149,32 @@ public class Mimi {
             throw new MimiException("The event date cannot be empty!");
         }
 
-        taskList[taskCount] = new Event(eventName, fromDate, toDate);
+        taskList.add(new Event(eventName, fromDate, toDate));
 
         printAddedTask();
-        taskCount++;
+    }
+
+    private static void handleDelete(String line) throws MimiException {
+        int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
+
+        System.out.println(LINE);
+        System.out.println("I've removed this task:");
+        System.out.println(taskList.get(taskIndex).toString());
+
+        taskList.remove(taskIndex);
+
+        System.out.println("Now you have " + taskList.size() + " tasks in your list.");
+        System.out.println(LINE);
     }
 
     private static void printAddedTask() {
         System.out.println(LINE);
         System.out.println("I've added this task:");
-        System.out.println(taskList[taskCount].toString());
-        if (taskCount == 0) {
+        System.out.println(taskList.get(taskList.size()-1).toString());
+        if (taskList.size() == 1) {
             System.out.println("Now you have 1 task in your list.");
         } else {
-            System.out.println("Now you have " + (taskCount + 1) + " tasks in your list.");
+            System.out.println("Now you have " + taskList.size() + " tasks in your list.");
         }
         System.out.println(LINE);
     }
