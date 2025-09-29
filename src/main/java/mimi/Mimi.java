@@ -106,28 +106,38 @@ public class Mimi {
         String inputLine;
         do {
             inputLine = in.nextLine();
+            String[] parts = inputLine.split(" ", 2);
+            String command = parts[0].toLowerCase();
+            String lineBody = (parts.length == 2) ? parts[1] : "";
             try {
-                if (inputLine.equalsIgnoreCase("bye")) {
+                switch (command) {
+                case "bye":
                     System.out.println(LINE);
                     System.out.println("Bye. Hope to see you again soon!");
                     System.out.println(LINE);
                     return;
-                }
-                if (inputLine.equalsIgnoreCase("list")) { // show list
+                case "list":
                     printList();
-                } else if (inputLine.startsWith("mark")) { // mark as done
-                    markTaskAsDone(inputLine);
-                } else if (inputLine.startsWith("unmark")) { // unmark as done
-                    unmarkTaskAsDone(inputLine);
-                } else if (inputLine.startsWith("todo")) { // add new todo task
-                    addTodo(inputLine);
-                } else if (inputLine.startsWith("deadline")) { // add new deadline task
-                    addDeadline(inputLine);
-                } else if (inputLine.startsWith("event")) { // add new event task
-                    addEvent(inputLine);
-                } else if (inputLine.startsWith("delete")) {
-                    handleDelete(inputLine);
-                } else { // print a statement when an invalid command is received
+                    break;
+                case "mark":
+                    markTaskAsDone(lineBody);
+                    break;
+                case "unmark":
+                    unmarkTaskAsDone(lineBody);
+                    break;
+                case "todo":
+                    addTodo(lineBody);
+                    break;
+                case "deadline":
+                    addDeadline(lineBody);
+                    break;
+                case "event":
+                    addEvent(lineBody);
+                    break;
+                case "delete":
+                    handleDelete(lineBody);
+                    break;
+                default:
                     throw new MimiException("Please enter a valid command :(");
                 }
             } catch (MimiException e) {
@@ -150,8 +160,14 @@ public class Mimi {
         System.out.println(LINE);
     }
 
-    private static void markTaskAsDone(String line) {
-        int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
+    private static void markTaskAsDone(String lineBody) throws MimiException {
+        if (lineBody.trim().isEmpty()) {
+            throw new MimiException("Enter a task number!");
+        }
+        int taskIndex = Integer.parseInt(lineBody.trim()) - 1;
+        if (taskIndex >= taskList.size()) {
+            throw new MimiException("Task number is out of list range! Enter a valid task number!");
+        }
         taskList.get(taskIndex).markAsDone();
 
         System.out.println(LINE);
@@ -162,8 +178,14 @@ public class Mimi {
         save(taskList);
     }
 
-    private static void unmarkTaskAsDone(String line) {
-        int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
+    private static void unmarkTaskAsDone(String lineBody) throws MimiException {
+        if (lineBody.trim().isEmpty()) {
+            throw new MimiException("Enter a task number!");
+        }
+        int taskIndex = Integer.parseInt(lineBody.trim()) - 1;
+        if (taskIndex >= taskList.size()) {
+            throw new MimiException("Task number is out of list range! Enter a valid task number!");
+        }
         taskList.get(taskIndex).unmarkAsDone();
 
         System.out.println(LINE);
@@ -174,11 +196,11 @@ public class Mimi {
         save(taskList);
     }
 
-    private static void addTodo(String line) throws MimiException {
-        if ((line.length() <= 5) || (line.substring(5).trim()).isEmpty()) {
+    private static void addTodo(String lineBody) throws MimiException {
+        String taskName = lineBody.trim();
+        if (taskName.isEmpty()) {
             throw new MimiException("The todo description cannot be empty!");
         }
-        String taskName = line.substring(5);
         taskList.add(new Todo(taskName));
 
         printAddedTask();
@@ -186,11 +208,12 @@ public class Mimi {
         save(taskList);
     }
 
-    private static void addDeadline(String line) throws MimiException {
-        if ((line.length() <= 9) || (line.substring(9).trim()).isEmpty()) {
+    private static void addDeadline(String lineBody) throws MimiException {
+        String deadlineSubstring = lineBody.trim();
+        if (deadlineSubstring.isEmpty()) {
             throw new MimiException("The deadline description cannot be empty!");
         }
-        String deadlineSubstring = line.substring(9);
+
         String[] deadlineDetails = deadlineSubstring.split(" /by ");
         if (deadlineDetails.length != 2) {
             throw new MimiException("The deadline format is incorrect!");
@@ -212,11 +235,11 @@ public class Mimi {
         save(taskList);
     }
 
-    private static void addEvent(String line) throws MimiException {
-        if ((line.length() <= 6) || (line.substring(6).trim()).isEmpty()) {
+    private static void addEvent(String lineBody) throws MimiException {
+        String eventSubstring = lineBody.trim();
+        if (eventSubstring.isEmpty()) {
             throw new MimiException("The event description cannot be empty!");
         }
-        String eventSubstring = line.substring(6);
         String[] eventDetails = eventSubstring.split(" /from ");
         if (eventDetails.length != 2) {
             throw new MimiException("The event format is incorrect!");
@@ -245,8 +268,14 @@ public class Mimi {
         save(taskList);
     }
 
-    private static void handleDelete(String line) throws MimiException {
-        int taskIndex = Integer.parseInt(line.split(" ")[1]) - 1;
+    private static void handleDelete(String lineBody) throws MimiException {
+        if (lineBody.trim().isEmpty()) {
+            throw new MimiException("Enter a task number!");
+        }
+        int taskIndex = Integer.parseInt(lineBody.trim()) - 1;
+        if (taskIndex >= taskList.size()) {
+            throw new MimiException("Task number is out of list range! Enter a valid task number!");
+        }
 
         System.out.println(LINE);
         System.out.println("I've removed this task:");
