@@ -3,6 +3,7 @@ package mimi.ui;
 import mimi.TaskList;
 import mimi.tasks.Task;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
@@ -64,13 +65,24 @@ public class Ui {
         System.out.printf("Now you have %d task%s in the list.%n", total, total == 1 ? "" : "s");
     }
 
-    public void showMark(Task taskName) {
+    public void showMarked(Task taskName) {
         System.out.println("Yay! I've marked this task as done:");
         System.out.println(taskName);
     }
 
-    public void showUnmark(Task taskName) {
+    public void showUnmarked(Task taskName) {
         System.out.println("Aw ok, I've marked this task as not done yet:");
         System.out.println(taskName);
+    }
+
+    public void showFoundTasks(ArrayList<Task> matches) {
+        if (matches.isEmpty()) {
+            System.out.println("There are no matching tasks in the list.");
+        } else {
+            System.out.println("Here are the matching tasks in the list:");
+            for (int i = 0; i < matches.size(); i++) {
+                System.out.println((i + 1) + ". " + matches.get(i));
+            }
+        }
     }
 }

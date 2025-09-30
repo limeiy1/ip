@@ -23,6 +23,17 @@ public class TaskList {
         return tasks.get(index);
     }
 
+    public ArrayList<Task> find(String keyword) {
+        ArrayList<Task> matches = new ArrayList<>();
+        for (Task task : tasks) {
+            String taskDescription = (task.toString()).toLowerCase();
+            if (taskDescription.contains(keyword.toLowerCase())) {
+                matches.add(task);
+            }
+        }
+        return matches;
+    }
+
     public void add(Task taskName) {
         tasks.add(taskName);
     }
@@ -44,6 +55,4 @@ public class TaskList {
     public ArrayList<Task> asList() {
         return new ArrayList<>(tasks);
     }
-
-
 }
