@@ -20,7 +20,7 @@ public class MarkCommand extends Command {
         }
         Task taskName = tasks.get(index);
         tasks.mark(index);
-        ui.showMark(taskName);
+        ui.showMarked(taskName);
         storage.save(tasks.asList());
     }
 }
