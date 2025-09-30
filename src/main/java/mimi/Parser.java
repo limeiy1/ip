@@ -6,6 +6,7 @@ import mimi.commands.AddTodoCommand;
 import mimi.commands.Command;
 import mimi.commands.DeleteCommand;
 import mimi.commands.ExitCommand;
+import mimi.commands.FindCommand;
 import mimi.commands.ListCommand;
 import mimi.commands.MarkCommand;
 import mimi.commands.UnmarkCommand;
@@ -22,6 +23,11 @@ public class Parser {
 
         case "list":
             return new ListCommand();
+
+        case "find":
+            checkFormatError(parts, "Missing keyword! (format: find <keyword>)");
+            String keyword = parts[1];
+            return new FindCommand(keyword);
 
         case "mark": {
             checkFormatError(parts, "Missing task number! (format: mark <taskNumber>)");
@@ -43,7 +49,8 @@ public class Parser {
 
         case "todo": {
             checkFormatError(parts, "Missing description! (format: todo <description>)");
-            return new AddTodoCommand(parts[1]);
+            String taskName = parts[1];
+            return new AddTodoCommand(taskName);
         }
 
         case "deadline": {

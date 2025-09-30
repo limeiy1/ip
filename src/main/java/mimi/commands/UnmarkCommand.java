@@ -20,7 +20,7 @@ public class UnmarkCommand extends Command {
         }
         Task taskName = tasks.get(index);
         tasks.unmark(index);
-        ui.showUnmark(taskName);
+        ui.showUnmarked(taskName);
         storage.save(tasks.asList());
     }
 }
