@@ -1,4 +1,18 @@
 package mimi.commands;
 
-public class ExitCommand {
+import mimi.storage.Storage;
+import mimi.TaskList;
+import mimi.ui.Ui;
+import mimi.exception.MimiException;
+
+public class ExitCommand extends Command {
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws MimiException {
+        ui.showBye();
+    }
+
+    @Override
+    public boolean isExit() {
+        return true;
+    }
 }

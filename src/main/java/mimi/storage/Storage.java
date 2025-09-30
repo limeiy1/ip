@@ -1,4 +1,4 @@
-package mimi;
+package mimi.storage;
 
 import mimi.exception.MimiException;
 import mimi.tasks.Deadline;
@@ -14,17 +14,22 @@ import java.util.Scanner;
 
 public class Storage {
 
-    private static String filePath;
+    private final String filePath;
 
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
-    public static ArrayList<Task> load() throws MimiException {
+    public ArrayList<Task> load() throws MimiException {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 
-        file.getParentFile().mkdirs();
+        File parentDir = file.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            if (!parentDir.mkdirs()) {
+                throw new MimiException("Failed to create directory: " + parentDir.getAbsolutePath());
+            }
+        }
 
         if (!file.exists()) {
             return tasks;
@@ -85,10 +90,10 @@ public class Storage {
         }
     }
 
-    public static void save(ArrayList<Task> taskList) {
-        try (FileWriter fw = new FileWriter(filePath)) {
+    public void save(ArrayList<Task> taskList) {
+        try (FileWriter newFileWriter = new FileWriter(filePath)) {
             for (Task task : taskList) {
-                fw.write(task.toSaveFormat() + System.lineSeparator());
+                newFileWriter.write(task.toSaveFormat() + System.lineSeparator());
             }
         } catch (IOException e) {
             System.out.println("Error saving tasks: " + e.getMessage());
