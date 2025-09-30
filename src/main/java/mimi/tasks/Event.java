@@ -1,15 +1,11 @@
 package mimi.tasks;
 
-import mimi.exception.MimiException;
-
-
-
 public class Event extends Task {
 
-    private String from;
-    private String to;
+    private final String from;
+    private final String to;
 
-    public Event(String description, String from, String to) throws MimiException {
+    public Event(String description, String from, String to) {
         super(description);
         this.from = from;
         this.to = to;

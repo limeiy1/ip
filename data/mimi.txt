@@ -1,6 +1,5 @@
-T | 1 | work
-T | 0 | practice
-D | 1 | assignment | 7 jan
+T | 1 | practice
+D | 0 | assignment | 7 jan
 D | 0 | hw | 10 feb
 D | 0 | revise | wed
-E | 0 | hackathon | mon | wed
+E | 1 | hackathon | mon | wed

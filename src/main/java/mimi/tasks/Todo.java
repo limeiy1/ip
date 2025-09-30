@@ -1,10 +1,8 @@
 package mimi.tasks;
 
-import mimi.exception.MimiException;
-
 public class Todo extends mimi.tasks.Task {
 
-    public Todo(String description) throws MimiException {
+    public Todo(String description) {
         super(description);
     }
 
