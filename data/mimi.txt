@@ -4,3 +4,7 @@ D | 0 | hw | 10 feb
 D | 0 | revise | wed
 E | 1 | hackathon | mon | wed
 T | 0 | chem hw
+T | 0 | coding assignment
+T | 0 | practice piano
+D | 0 | submit assignment | 10 jan
+E | 0 | meeting | Fri 1pm | 2pm
