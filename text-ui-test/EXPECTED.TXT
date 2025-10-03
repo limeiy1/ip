@@ -5,28 +5,24 @@ ____________________________________________________________
 ____________________________________________________________
 I've added this task:
 [T][ ] borrow book
-Now you have 1 task in your list.
-____________________________________________________________
-____________________________________________________________
-Here are the tasks in your list:
-1. [T][ ] borrow book
+Now you have 6 tasks in the list.
 ____________________________________________________________
 ____________________________________________________________
 I've added this task:
 [D][ ] return book (by: Sunday)
-Now you have 2 tasks in your list.
+Now you have 7 tasks in the list.
 ____________________________________________________________
 ____________________________________________________________
 I've added this task:
 [E][ ] project meeting (from: Mon 2pm to: 4pm)
-Now you have 3 tasks in your list.
+Now you have 8 tasks in the list.
 ____________________________________________________________
 ____________________________________________________________
-Please enter a valid command :(
+I'm sorry, but I don't know what that means :-(
 ____________________________________________________________
 ____________________________________________________________
-The event format is incorrect!
+Incorrect format! (format: event <description> /from <start> /to <end>)
 ____________________________________________________________
 ____________________________________________________________
-The todo description cannot be empty!
+Missing description! (format: todo <description>)
 ____________________________________________________________
