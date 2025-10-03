@@ -1,19 +1,27 @@
 # Mimi User Guide
 
-Mimi is a Personal Assistant Chatbot that helps a person to keep track of various things.
+Mimi is a Personal Assistant Chatbot that helps a person to keep track of various tasks, 
+optimized for use via a Command Line Interface (CLI).
 The user can add tasks of three types to a task list: todo, deadline and event.
 The tasks can be marked as done upon completion.
-- [Quick Start]()
+- [Quick Start](https://github.com/limeiy1/ip/blob/master/docs/README.md#quick-start)
 - [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features)
   - [Listing all tasks: `list`](https://github.com/limeiy1/ip/blob/master/docs/README.md#listing-all-tasks-list)
-
+  - [Finding a task: `find`](https://github.com/limeiy1/ip/blob/master/docs/README.md#finding-a-task-find)
+  - [Adding a todo task: `todo`](https://github.com/limeiy1/ip/blob/master/docs/README.md#adding-a-todo-task-todo)
+  - [Adding a deadline task: `deadline`](https://github.com/limeiy1/ip/blob/master/docs/README.md#adding-a-deadline-task-deadline)
+  - [Adding an event: `event`](https://github.com/limeiy1/ip/blob/master/docs/README.md#adding-an-event-event)
+  - [Marking a task as done: `mark`](https://github.com/limeiy1/ip/blob/master/docs/README.md#marking-a-task-as-done-mark)
+  - [Marking a task as not done: `unmark`](https://github.com/limeiy1/ip/blob/master/docs/README.md#marking-a-task-as-not-done-unmark)
+  - [Deleting a task: `delete`](https://github.com/limeiy1/ip/blob/master/docs/README.md#deleting-a-task-delete)
+  - [Exiting the programme: `bye`](https://github.com/limeiy1/ip/blob/master/docs/README.md#exiting-the-programme-bye)
 
 ## Quick Start
 
 1. Ensure you have Java `17` or above installed in your Computer.
-2. Download the latest `mimi.jar` file from here.
+2. Download the latest `mimi.jar` file from [here]().
 3. Copy the file to the folder you want to use as the home folder for your Mimi Chatbot.
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar mimi.jar` command to run the application.
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar mimi.jar` command to run the chatbot.
    A greeting message below should appear.
 ```
 ____________________________________________________________
@@ -29,7 +37,7 @@ Some example commands you can try:
    - `mark 1`: Marks the 1st task in the list as done.
    - `delete 1`: Deletes the 1st task in the list.
    - `bye`: Exits the program.
-6. Refer to the Features below for details of each command.
+6. Refer to the [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features) below for details of each command.
 
 
 ## Features
