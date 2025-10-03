@@ -41,6 +41,11 @@ Some example commands you can try:
 
 
 ## Features
+#### Notes about the command format:
+- Words in `UPPER_CASE` are the parameters to be supplied by the user.
+- Commands are case-insensitive. e.g. `list` will match `List`
+- `TIME` can be in any format (it can be a date or time, or both), and will be reflected in the task list in the same format.
+- `INDEX` must be a positive integer and within the range of the list, or an error message will be shown.
 
 ### Listing all tasks: `list`
 
@@ -66,7 +71,7 @@ Finds the tasks which contain the keyword.
 
 Format: `find KEYWORD`
 
-Example: `find assignment` returns
+Example: `find assignment` will output
 ```
 ____________________________________________________________
 Here are the matching tasks in the list:
@@ -82,7 +87,7 @@ Adds a todo task to the task list.
 
 Format: `todo TASK`
 
-Example: `todo practice piano`
+Example: `todo practice piano` will output
 ```
 ____________________________________________________________
 I've added this task:
@@ -95,9 +100,9 @@ ____________________________________________________________
 
 Adds a deadline task to the task list.
 
-Format: `deadline TASK /by DATE/TIME`
+Format: `deadline TASK /by TIME`
 
-Example: `deadline submit assignment /by 10 jan`
+Example: `deadline submit assignment /by 10 jan` will output
 ```
 ____________________________________________________________
 I've added this task:
@@ -111,9 +116,9 @@ ____________________________________________________________
 
 Adds an event task to the task list.
 
-Format: `event TASK /from DATE/TIME /to DATE/TIME`
+Format: `event TASK /from TIME /to TIME`
 
-Example: `event meeting /from Fri 1pm /to 2pm`
+Example: `event meeting /from Fri 1pm /to 2pm` will output
 ```
 ____________________________________________________________
 I've added this task:
@@ -174,6 +179,8 @@ ____________________________________________________________
 Exits the program.
 
 Format: `bye`
+
+A goodbye message will appear:
 ```
 ____________________________________________________________
 Bye! Hope to see you again soon!
