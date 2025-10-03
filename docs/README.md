@@ -3,18 +3,34 @@
 Mimi is a Personal Assistant Chatbot that helps a person to keep track of various things.
 The user can add tasks of three types to a task list: todo, deadline and event.
 The tasks can be marked as done upon completion.
+    [Quick Start]()
+    [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features)
+        [Listing all tasks: `list`](https://github.com/limeiy1/ip/blob/master/docs/README.md#listing-all-tasks-list)
 
-Upon launching the chatbot, the user will see the following output:
+
+## Quick Start
+
+1. Ensure you have Java `17` or above installed in your Computer.
+2. Download the latest `mimi.jar` file from here.
+3. Copy the file to the folder you want to use as the home folder for your Mimi Chatbot.
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar mimi.jar` command to run the application.
+   A greeting message below should appear.
 ```
 ____________________________________________________________
 Hello! I'm Mimi.
 What can I do for you?
 ____________________________________________________________
 ```
+5. Type a command in the terminal and press Enter to execute it. 
+e.g. typing `list` and pressing Enter will show a list of all the tasks in the task list.
+Some example commands you can try:
+    `list`: List all tasks
+    `todo do laundry`: Adds a todo task "do laundry" to the task list.
+    `mark 1`: Marks the 1st task in the list as done.
+    `delete 1`: Deletes the 1st task in the list.
+    `bye`: Exits the program.
+6. Refer to the Features below for details of each command.
 
-// Product screenshot goes here
-
-// Product intro goes here
 
 ## Features
 
@@ -68,7 +84,7 @@ Now you have 9 tasks in the list.
 
 ### Adding an event: `event`
 
-Adds a event task to the task list.
+Adds an event task to the task list.
 
 Format: `event TASK /from DATE/TIME /to DATE/TIME`
 
@@ -125,27 +141,3 @@ Bye! Hope to see you again soon!
 ```
 
 
-
-
-## Adding deadlines
-
-// Describe the action and its outcome.
-
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
-```
-expected output
-```
-
-## Feature ABC
-
-// Feature details
-
-
-## Feature XYZ
-
-// Feature details
