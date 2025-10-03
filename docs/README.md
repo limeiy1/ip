@@ -19,7 +19,7 @@ The tasks can be marked as done upon completion.
 ## Quick Start
 
 1. Ensure you have Java `17` or above installed in your Computer.
-2. Download the latest `mimi.jar` file from [here]().
+2. Download the latest `mimi.jar` file from [here](https://github.com/limeiy1/ip/releases/tag/A-Release).
 3. Copy the file to the folder you want to use as the home folder for your Mimi Chatbot.
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar mimi.jar` command to run the chatbot.
    A greeting message below should appear.
