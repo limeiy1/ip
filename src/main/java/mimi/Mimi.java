@@ -6,12 +6,21 @@ import mimi.exception.MimiException;
 import mimi.storage.Storage;
 import mimi.ui.Ui;
 
+/**
+ * Entry point of Mimi application.
+ * Initialises the application and starts the interaction with user.
+ */
 public class Mimi {
 
     private final Storage storage;
     private TaskList tasks;
     private final Ui ui;
 
+    /**
+     * Creates a Mimi application by loading the data from the storage file.
+     *
+     * @param filePath filepath to save the data.
+     */
     public Mimi(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -23,6 +32,9 @@ public class Mimi {
         }
     }
 
+    /**
+     * Runs the programme until termination.
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
@@ -41,6 +53,10 @@ public class Mimi {
         }
     }
 
+    /**
+     * launch Mimi application
+     * @param args arguments supplied by user at programme launch.
+     */
     public static void main(String[] args) {
         new Mimi("./data/mimi.txt").run();
     }

@@ -16,10 +16,19 @@ public class Storage {
 
     private final String filePath;
 
+    /**
+     * Constructs a Storage object for the given file path.
+     * @param filePath filepath where task list is stored.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Loads file from the saved file specified by filePath.
+     * @return an ArrayList of objects from the file
+     * @throws MimiException if file cannot be read
+     */
     public ArrayList<Task> load() throws MimiException {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
@@ -48,6 +57,12 @@ public class Storage {
 
     }
 
+    /**
+     * Convert the task data in the file to create a Task object.
+     * @param line the line of task data in the file
+     * @return a Task object corresponding to the task data
+     * @throws MimiException if task data format is wrong
+     */
     private static Task parseData(String line) throws MimiException {
         String[] word = line.split("\\|");
         if (word.length < 3) {
@@ -90,6 +105,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Save the task list to the file specified by filePath.
+     * @param taskList the task list to be saved
+     */
     public void save(ArrayList<Task> taskList) {
         try (FileWriter newFileWriter = new FileWriter(filePath)) {
             for (Task task : taskList) {
