@@ -4,17 +4,17 @@ Mimi is a Personal Assistant Chatbot that helps a person to keep track of variou
 optimized for use via a Command Line Interface (CLI).
 The user can add tasks of three types to a task list: todo, deadline and event.
 The tasks can be marked as done upon completion.
-- [Quick Start](https://github.com/limeiy1/ip/blob/master/docs/README.md#quick-start)
-- [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features)
-  - [Listing all tasks: `list`](https://github.com/limeiy1/ip/blob/master/docs/README.md#listing-all-tasks-list)
-  - [Finding a task: `find`](https://github.com/limeiy1/ip/blob/master/docs/README.md#finding-a-task-find)
-  - [Adding a todo task: `todo`](https://github.com/limeiy1/ip/blob/master/docs/README.md#adding-a-todo-task-todo)
-  - [Adding a deadline task: `deadline`](https://github.com/limeiy1/ip/blob/master/docs/README.md#adding-a-deadline-task-deadline)
-  - [Adding an event: `event`](https://github.com/limeiy1/ip/blob/master/docs/README.md#adding-an-event-event)
-  - [Marking a task as done: `mark`](https://github.com/limeiy1/ip/blob/master/docs/README.md#marking-a-task-as-done-mark)
-  - [Marking a task as not done: `unmark`](https://github.com/limeiy1/ip/blob/master/docs/README.md#marking-a-task-as-not-done-unmark)
-  - [Deleting a task: `delete`](https://github.com/limeiy1/ip/blob/master/docs/README.md#deleting-a-task-delete)
-  - [Exiting the programme: `bye`](https://github.com/limeiy1/ip/blob/master/docs/README.md#exiting-the-programme-bye)
+- [Quick Start](https://limeiy1.github.io/ip/#quick-start)
+- [Features](https://limeiy1.github.io/ip/#features)
+  - [Listing all tasks: `list`](https://limeiy1.github.io/ip/#listing-all-tasks-list)
+  - [Finding a task: `find`](https://limeiy1.github.io/ip/#finding-a-task-find)
+  - [Adding a todo task: `todo`](https://limeiy1.github.io/ip/#adding-a-todo-task-todo)
+  - [Adding a deadline task: `deadline`](https://limeiy1.github.io/ip/#adding-a-deadline-task-deadline)
+  - [Adding an event: `event`](https://limeiy1.github.io/ip/#adding-an-event-event)
+  - [Marking a task as done: `mark`](https://limeiy1.github.io/ip/#marking-a-task-as-done-mark)
+  - [Marking a task as not done: `unmark`](https://limeiy1.github.io/ip/#marking-a-task-as-not-done-unmark)
+  - [Deleting a task: `delete`](https://limeiy1.github.io/ip/#deleting-a-task-delete)
+  - [Exiting the programme: `bye`](https://limeiy1.github.io/ip/#exiting-the-programme-bye)
 
 ## Quick Start
 
