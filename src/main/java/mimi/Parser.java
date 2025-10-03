@@ -12,6 +12,9 @@ import mimi.commands.MarkCommand;
 import mimi.commands.UnmarkCommand;
 import mimi.exception.MimiException;
 
+/**
+ * Parses user input.
+ */
 public class Parser {
     public static Command parse(String input) throws MimiException {
         String[] parts = input.trim().split("\\s+", 2);
@@ -82,12 +85,24 @@ public class Parser {
         }
     }
 
+    /**
+     * Checks if there is any format error in the input
+     * @param parts the split array
+     * @param message the error message to display to users
+     * @throws MimiException if there is format error
+     */
     private static void checkFormatError(String[] parts, String message) throws MimiException {
         if (parts.length < 2 || parts[1].isBlank()) {
             throw new MimiException(message);
         }
     }
 
+    /**
+     * Checks if task number is valid.
+     * @param inputNumber task number given by user
+     * @return task number if valid
+     * @throws MimiException if task number is invalid
+     */
     private static int parseIndex(String inputNumber) throws MimiException {
         try {
             int index = Integer.parseInt(inputNumber.trim()) - 1;

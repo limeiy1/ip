@@ -6,6 +6,9 @@ import mimi.tasks.Task;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles all user interactions including reading user input and printing formatted output.
+ */
 public class Ui {
     static final String LINE =
             "____________________________________________________________";
