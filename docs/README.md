@@ -1,6 +1,16 @@
 # Mimi User Guide
 
-// Update the title above to match the actual product name
+Mimi is a Personal Assistant Chatbot that helps a person to keep track of various things.
+The user can add tasks of three types to a task list: todo, deadline and event.
+The tasks can be marked as done upon completion.
+
+Upon launching the chatbot, the user will see the following output:
+```
+____________________________________________________________
+Hello! I'm Mimi.
+What can I do for you?
+____________________________________________________________
+```
 
 // Product screenshot goes here
 
@@ -8,20 +18,20 @@
 
 ## Features
 
-### Listing all tasks: 'list'
+### Listing all tasks: `list`
 
 Shows a list of all tasks in the task list.
 
-Format: 'list'
+Format: `list`
 
 
-### Finding a task: 'find'
+### Finding a task: `find`
 
 Finds the tasks which contain the keyword.
 
-Format: 'find KEYWORD'
+Format: `find KEYWORD`
 
-Example: 'find assignment' returns
+Example: `find assignment` returns
 ```
 Here are the matching tasks in the list:
 1. [D][ ] assignment (by: 7 jan)
@@ -29,26 +39,26 @@ Here are the matching tasks in the list:
 ```
 
 
-### Adding a todo task: 'todo'
+### Adding a todo task: `todo`
 
 Adds a todo task to the task list.
 
-Format: 'todo TASK'
+Format: `todo TASK`
 
-Example: 'todo practice piano'
+Example: `todo practice piano`
 ```
 I've added this task:
 [T][ ] practice piano
 Now you have 8 tasks in the list.
 ```
 
-### Adding a deadline task: 'deadline'
+### Adding a deadline task: `deadline`
 
 Adds a deadline task to the task list.
 
-Format: 'deadline TASK /by DATE/TIME'
+Format: `deadline TASK /by DATE/TIME`
 
-Example: 'deadline submit assignment /by 10 jan'
+Example: `deadline submit assignment /by 10 jan`
 ```
 I've added this task:
 [D][ ] submit assignment (by: 10 jan)
@@ -56,13 +66,13 @@ Now you have 9 tasks in the list.
 ```
 
 
-### Adding an event: 'event'
+### Adding an event: `event`
 
 Adds a event task to the task list.
 
-Format: 'event TASK /from DATE/TIME /to DATE/TIME'
+Format: `event TASK /from DATE/TIME /to DATE/TIME`
 
-Example: 'event meeting /from Fri 1pm /to 2pm'
+Example: `event meeting /from Fri 1pm /to 2pm`
 ```
 I've added this task:
 [E][ ] meeting (from: Fri 1pm to: 2pm)
@@ -70,46 +80,46 @@ Now you have 10 tasks in the list.
 ```
 
 
-### Marking a task as done: 'mark'
+### Marking a task as done: `mark`
 
 Marks the specified task as done.
 
-Format: 'mark INDEX'
+Format: `mark INDEX`
 
-Example: 'mark 8' marks the 8th task in the list as done.
+Example: `mark 8` marks the 8th task in the list as done.
 ```
 Yay! I've marked this task as done:
 [T][X] practice piano
 ```
 
 
-### Marking a task as not done: 'unmark'
+### Marking a task as not done: `unmark`
 
 Marks the specified task as not done yet.
 
-Format: 'unmark INDEX'
+Format: `unmark INDEX`
 
-Example: 'unmark 8' marks the 8th task in the list as not done yet.
+Example: `unmark 8` marks the 8th task in the list as not done yet.
 ```
 Aw ok, I've marked this task as not done yet:
 [T][ ] practice piano
 ```
 
 
-### Deleting a task: 'delete'
+### Deleting a task: `delete`
 
 Deletes the specified task from the task list.
 
-Format: 'delete INDEX'
+Format: `delete INDEX`
 
-Example: 'delete 2' deletes the 2nd task in the list.
+Example: `delete 2` deletes the 2nd task in the list.
 
 
-### Exiting the programme: 'bye'
+### Exiting the programme: `bye`
 
 Exits the program.
 
-Format: 'bye'
+Format: `bye`
 ```
 Bye! Hope to see you again soon!
 ```
