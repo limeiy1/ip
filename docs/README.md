@@ -37,7 +37,7 @@ Some example commands you can try:
    - `mark 1`: Marks the 1st task in the list as done.
    - `delete 1`: Deletes the 1st task in the list.
    - `bye`: Exits the program.
-6. Refer to the [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features) below for details of each command.
+6. Refer to the [Features](https://limeiy1.github.io/ip/#features) below for details of each command.
 
 
 ## Features
@@ -48,6 +48,17 @@ Shows a list of all tasks in the task list.
 
 Format: `list`
 
+Example output:
+```
+____________________________________________________________
+1. [T][X] practice
+2. [D][ ] assignment (by: 7 jan)
+3. [T][ ] coding assignment
+4. [D][ ] revise (by: wed)
+5. [E][X] hackathon (from: mon to: wed)
+____________________________________________________________
+```
+
 
 ### Finding a task: `find`
 
@@ -57,9 +68,11 @@ Format: `find KEYWORD`
 
 Example: `find assignment` returns
 ```
+____________________________________________________________
 Here are the matching tasks in the list:
 1. [D][ ] assignment (by: 7 jan)
 2. [T][ ] coding assignment
+____________________________________________________________
 ```
 
 
@@ -71,9 +84,11 @@ Format: `todo TASK`
 
 Example: `todo practice piano`
 ```
+____________________________________________________________
 I've added this task:
 [T][ ] practice piano
-Now you have 8 tasks in the list.
+Now you have 6 tasks in the list.
+____________________________________________________________
 ```
 
 ### Adding a deadline task: `deadline`
@@ -84,9 +99,11 @@ Format: `deadline TASK /by DATE/TIME`
 
 Example: `deadline submit assignment /by 10 jan`
 ```
+____________________________________________________________
 I've added this task:
 [D][ ] submit assignment (by: 10 jan)
-Now you have 9 tasks in the list.
+Now you have 7 tasks in the list.
+____________________________________________________________
 ```
 
 
@@ -98,9 +115,11 @@ Format: `event TASK /from DATE/TIME /to DATE/TIME`
 
 Example: `event meeting /from Fri 1pm /to 2pm`
 ```
+____________________________________________________________
 I've added this task:
 [E][ ] meeting (from: Fri 1pm to: 2pm)
-Now you have 10 tasks in the list.
+Now you have 8 tasks in the list.
+____________________________________________________________
 ```
 
 
@@ -110,10 +129,12 @@ Marks the specified task as done.
 
 Format: `mark INDEX`
 
-Example: `mark 8` marks the 8th task in the list as done.
+Example: `mark 6` marks the 6th task in the list as done.
 ```
+____________________________________________________________
 Yay! I've marked this task as done:
 [T][X] practice piano
+____________________________________________________________
 ```
 
 
@@ -123,10 +144,12 @@ Marks the specified task as not done yet.
 
 Format: `unmark INDEX`
 
-Example: `unmark 8` marks the 8th task in the list as not done yet.
+Example: `unmark 6` marks the 6th task in the list as not done yet.
 ```
+____________________________________________________________
 Aw ok, I've marked this task as not done yet:
 [T][ ] practice piano
+____________________________________________________________
 ```
 
 
@@ -136,7 +159,14 @@ Deletes the specified task from the task list.
 
 Format: `delete INDEX`
 
-Example: `delete 2` deletes the 2nd task in the list.
+Example: `delete 6` deletes the 6th task in the list.
+```
+____________________________________________________________
+I've removed this task:
+[T][ ] practice piano
+Now you have 7 tasks in the list.
+____________________________________________________________
+```
 
 
 ### Exiting the programme: `bye`
@@ -145,7 +175,9 @@ Exits the program.
 
 Format: `bye`
 ```
+____________________________________________________________
 Bye! Hope to see you again soon!
+____________________________________________________________
 ```
 
 
