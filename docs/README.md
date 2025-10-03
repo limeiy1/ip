@@ -3,9 +3,9 @@
 Mimi is a Personal Assistant Chatbot that helps a person to keep track of various things.
 The user can add tasks of three types to a task list: todo, deadline and event.
 The tasks can be marked as done upon completion.
-    [Quick Start]()
-    [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features)
-        [Listing all tasks: `list`](https://github.com/limeiy1/ip/blob/master/docs/README.md#listing-all-tasks-list)
+    - [Quick Start]()
+    - [Features](https://github.com/limeiy1/ip/blob/master/docs/README.md#features)
+        - [Listing all tasks: `list`](https://github.com/limeiy1/ip/blob/master/docs/README.md#listing-all-tasks-list)
 
 
 ## Quick Start
@@ -24,11 +24,11 @@ ____________________________________________________________
 5. Type a command in the terminal and press Enter to execute it. 
 e.g. typing `list` and pressing Enter will show a list of all the tasks in the task list.
 Some example commands you can try:
-    `list`: List all tasks
-    `todo do laundry`: Adds a todo task "do laundry" to the task list.
-    `mark 1`: Marks the 1st task in the list as done.
-    `delete 1`: Deletes the 1st task in the list.
-    `bye`: Exits the program.
+    - `list`: List all tasks
+    - `todo do laundry`: Adds a todo task "do laundry" to the task list.
+    - `mark 1`: Marks the 1st task in the list as done.
+    - `delete 1`: Deletes the 1st task in the list.
+    - `bye`: Exits the program.
 6. Refer to the Features below for details of each command.
 
 
